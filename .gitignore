@@ -47,5 +47,60 @@ int main() {
 
     countAndPrintPerfectSquares(n); // Gọi hàm để đếm và in ra các số chính phương nhỏ hơn n
 
+//bai 3
+using System;
+using System.Windows.Forms;
+
+namespace SortingApp {
+    public partial class MainForm : Form {
+        public MainForm() {
+            InitializeComponent();
+        }
+
+        private void btnSort_Click(object sender, EventArgs e) {
+            // Lấy dữ liệu từ TextBox và chuyển đổi thành mảng số nguyên
+            string input = txtInput.Text;
+            string[] numbers = input.Split(',');
+            int[] arr = new int[numbers.Length];
+            for (int i = 0; i < numbers.Length; i++) {
+                if (!int.TryParse(numbers[i], out arr[i])) {
+                    MessageBox.Show("Dữ liệu nhập không hợp lệ!");
+                    return;
+                }
+            }
+
+            // Sắp xếp mảng theo thuật toán được chọn
+            switch (cbSortAlgorithm.SelectedItem.ToString()) {
+                case "Insertion Sort":
+                    InsertionSort(arr);
+                    break;
+                case "Selection Sort":
+                    SelectionSort(arr);
+                    break;
+                case "Bubble Sort":
+                    BubbleSort(arr);
+                    break;
+                case "Merge Sort":
+                    MergeSort(arr, 0, arr.Length - 1);
+                    break;
+                default:
+                    MessageBox.Show("Chưa chọn thuật toán sắp xếp!");
+                    return;
+            }
+
+            // Hiển thị mảng sau khi sắp xếp lên TextBox
+            txtResult.Text = string.Join(", ", arr);
+        }
+
+        // Các hàm sắp xếp
+        private void InsertionSort(int[] arr) { /* implement */ }
+        private void SelectionSort(int[] arr) { /* implement */ }
+        private void BubbleSort(int[] arr) { /* implement */ }
+        private void MergeSort(int[] arr, int l, int r) { /* implement */ }
+    }
+}
+
+
+
     return 0;
 }
