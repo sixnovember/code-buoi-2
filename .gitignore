@@ -1,52 +1,51 @@
-# Prerequisites
-*.d
+//bai 1
+#include <stdio.h>
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+int main() {
+    int i;
 
-# Linker output
-*.ilk
-*.map
-*.exp
+    printf("Các số nguyên có 2 chữ số và là bội của 7:\n");
 
-# Precompiled Headers
-*.gch
-*.pch
+    for (i = 10; i <= 99; i++) {
+        if (i % 7 == 0) {
+            printf("%d\n", i);
+        }
+    }
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+    return 0;
+}
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+//bai 2
+#include <stdio.h>
+#include <math.h> // Để sử dụng hàm sqrt()
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
+// Hàm kiểm tra xem một số có phải là số chính phương không
+int isPerfectSquare(int num) {
+    int squareRoot = sqrt(num); // Lấy căn bậc 2 của số
+    return (squareRoot * squareRoot == num); // Kiểm tra xem bình phương của căn bậc 2 có bằng số ban đầu không
+}
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+// Hàm đếm số chính phương nhỏ hơn n và in ra chúng
+void countAndPrintPerfectSquares(int n) {
+    int count = 0;
+    printf("Các số chính phương nhỏ hơn %d là:\n", n);
+    for (int i = 1; i < n; i++) {
+        if (isPerfectSquare(i)) {
+            printf("%d ", i);
+            count++;
+        }
+    }
+    printf("\nTổng số chính phương nhỏ hơn %d là: %d\n", n, count);
+}
+
+int main() {
+    int n;
+
+    printf("Nhập một số nguyên dương n: ");
+    scanf("%d", &n);
+
+    countAndPrintPerfectSquares(n); // Gọi hàm để đếm và in ra các số chính phương nhỏ hơn n
+
+    return 0;
+}
